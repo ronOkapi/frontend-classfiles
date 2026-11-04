@@ -1,22 +1,38 @@
+let exMin = document.getElementById("exercise-min");
 const outputField = document.getElementById("output");
 
-function hello(name) {
-    let output = "";
 
-    if(name === "Ron" || name === "Meow"){
-        output = `Hello meow ${name}`;
-    } else if(name === "Rat"){
-        output = `You are a rat!`;
+document.getElementById("btn").addEventListener("click", () => {
+
+    if(exMin.value === '' || isNaN(exMin.value)){
+        displayOutput("Please enter a number");
     } else {
-        output = `I dont know you ${name}, but nice to meet ya :3`;
+        checkTime(Number(exMin.value));
     }
 
-    return output;
+});
+
+const checkTime = (time) => {
+    let output = "";
+    const maxVal = 1440;
+    const minVal = 1;
+    
+
+    if(time > minVal && time < maxVal){
+        if(time < 30){
+            output = "Good job on moving! Maybe consider a short walk to add to that activity if you have the time";
+        } else {
+            output = "Great job moving alot!";
+        }    
+    } else if(time >= maxVal){
+        output = "Remeber to relax... You cannot exercise 24h or more straight.";
+    } else if (time === 0){
+        output = "Please consider taking even a short walk every day if able. It will improve your overall state greatly";
+    }
+
+    displayOutput(output);
 }
 
-function helloHandler() {
-    const name = document.getElementById("name").value;
-    const output = hello(name);
-
+const displayOutput = (output) => {
     outputField.innerHTML = output;
 }
