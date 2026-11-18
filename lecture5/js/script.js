@@ -39,7 +39,7 @@ stopBtn.addEventListener("click", () => {
 
 function startTimer() {
     timer = setInterval(() => {
-    timerOut.innerHTML = seconds;
-    seconds++
-}, 1000);
+        timerOut.innerHTML = seconds;
+        seconds++
+    }, 1000);
 }
